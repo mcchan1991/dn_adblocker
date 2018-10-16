@@ -1,0 +1,24 @@
+{
+  "name": "dn adblock",
+  "description": "dn adblock",
+  "version": "0.0.3",
+  "manifest_version": 2,
+  "background": {
+        "scripts": [ "javascripts/background.js" ],
+        "persistent": true
+     },
+  "content_scripts": [
+    {
+      "matches": [ "*://*.dnvod.tv/*", "*://*.dnvod.eu/*", "*://*.duonao.tv/*" ],
+      "js": [
+        "javascripts/content/adblocker.js"
+      ],
+	  "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["webRequest","webRequestBlocking","*://*.dnvod.tv/*", "*://*.dnvod.eu/*", "*://*.duonao.tv/*" ],
+  "web_accessible_resources" : [
+    "javascripts/*"
+  ],
+  "content_security_policy" : "script-src 'self'; object-src 'self'"
+}
